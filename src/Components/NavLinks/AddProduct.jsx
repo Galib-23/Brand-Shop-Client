@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import StarRatings from 'react-star-ratings';
+import Swal from 'sweetalert2';
 const AddProduct = () => {
 
     const [brandName, setbrandName] = useState('');
@@ -33,6 +34,15 @@ const AddProduct = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Product Has Been Added',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
         })
 
     }
@@ -111,7 +121,7 @@ const AddProduct = () => {
                 <div className="form-control">
                         <div className="input-group">
                             <select className="select select-bordered" onChange={handleBrandName} value={brandName}>
-                                <option disabled selected>Pick category</option>
+                                <option selected>Pick category</option>
                                 <option>Apple</option>
                                 <option>Samsung</option>
                                 <option>Sony</option>
