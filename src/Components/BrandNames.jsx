@@ -18,7 +18,7 @@ const BrandNames = () => {
                     </div>
                 </div>
             </Link>
-            <Link>
+            <Link to='/samsung'>
                 <div className="card bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10">
                         <img src={samsung} alt="Shoes" className="rounded-xl h-56 w-full" />
@@ -28,7 +28,7 @@ const BrandNames = () => {
                     </div>
                 </div>
             </Link>
-            <Link>
+            <Link to='/sony'>
                 <div className="card bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10">
                         <img src={sony} alt="Shoes" className="rounded-xl h-56 w-full" />
@@ -38,7 +38,7 @@ const BrandNames = () => {
                     </div>
                 </div>
             </Link>
-            <Link>
+            <Link to='/google'>
                 <div className="card bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10">
                         <img src={google} alt="Shoes" className="rounded-xl h-56 w-full" />
@@ -48,7 +48,7 @@ const BrandNames = () => {
                     </div>
                 </div>
             </Link>
-            <Link>
+            <Link to='/intel'>
                 <div className="card bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10">
                         <img src={intel} alt="Shoes" className="rounded-xl h-56 w-full" />
@@ -58,7 +58,7 @@ const BrandNames = () => {
                     </div>
                 </div>
             </Link>
-            <Link>
+            <Link to='/amd'>
                 <div className="card bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10">
                         <img src={amd} alt="Shoes" className="rounded-xl h-56 w-full" />

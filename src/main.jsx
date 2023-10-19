@@ -15,6 +15,11 @@ import AddProduct from './Components/NavLinks/AddProduct';
 import AuthProvider from './providers/AuthProvider';
 import PrivateRoute from './private/PrivateRoute';
 import Apple from './Components/BrandLinks/Apple';
+import Samsung from './Components/BrandLinks/Samsung';
+import Sony from './Components/BrandLinks/Sony';
+import Google from './Components/BrandLinks/Google';
+import Intel from './Components/BrandLinks/Intel';
+import Amd from './Components/BrandLinks/Amd';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +48,31 @@ const router = createBrowserRouter([
       {
         path: '/apple',
         element: <Apple></Apple>,
+        loader: () => fetch('http://localhost:5000/products')
+      },
+      {
+        path: '/samsung',
+        element: <Samsung></Samsung>,
+        loader: () => fetch('http://localhost:5000/products')
+      },
+      {
+        path: '/sony',
+        element: <Sony></Sony>,
+        loader: () => fetch('http://localhost:5000/products')
+      },
+      {
+        path: '/google',
+        element: <Google></Google>,
+        loader: () => fetch('http://localhost:5000/products')
+      },
+      {
+        path: '/intel',
+        element: <Intel></Intel>,
+        loader: () => fetch('http://localhost:5000/products')
+      },
+      {
+        path: '/amd',
+        element: <Amd></Amd>,
         loader: () => fetch('http://localhost:5000/products')
       },
     ]
