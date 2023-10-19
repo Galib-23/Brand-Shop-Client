@@ -20,6 +20,8 @@ import Sony from './Components/BrandLinks/Sony';
 import Google from './Components/BrandLinks/Google';
 import Intel from './Components/BrandLinks/Intel';
 import Amd from './Components/BrandLinks/Amd';
+import Details from './Components/BrandLinks/Crud/Details';
+import UpdateProduct from './Components/BrandLinks/Crud/UpdateProduct';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -75,6 +77,16 @@ const router = createBrowserRouter([
         element: <Amd></Amd>,
         loader: () => fetch('http://localhost:5000/products')
       },
+      {
+        path: '/details/:id',
+        element: <Details></Details>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+      },
+      {
+        path:'/updateProduct/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+      }
     ]
   },
 ]);

@@ -1,18 +1,25 @@
-import { useState } from 'react';
-import StarRatings from 'react-star-ratings';
-import Swal from 'sweetalert2';
-const AddProduct = () => {
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import StarRatings from "react-star-ratings";
+import Swal from "sweetalert2";
 
-    const [brandName, setbrandName] = useState('');
+const UpdateProduct = () => {
+    const product = useLoaderData();
+
+    const { productName, brandName, productType, price, description, image, rating } = product;
+
+
+    const [upbrandName, setUpbrandName] = useState('');
 
     const handleBrandName = (event) => {
-      setbrandName(event.target.value);
+      setUpbrandName(event.target.value);
     };
 
-    const [rating, setRating] = useState(0);
+    const [uprating, setUpRating] = useState(rating);
     const handleRatingChange = (newRating) => {
-        setRating(newRating);
+        setUpRating(newRating);
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -47,9 +54,12 @@ const AddProduct = () => {
 
     }
 
+
+
+
     return (
         <div className="md:container mx-auto">
-            <h2 className="text-4xl text-center font-extrabold my-12">Add Product</h2>
+            <h2 className="text-4xl text-center font-extrabold my-12">Update: {productName}</h2>
             <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="form-control">
@@ -59,6 +69,7 @@ const AddProduct = () => {
                         <label className="input-group">
                             <input type="text" placeholder="Product Name"
                                 name='productName'
+                                defaultValue={productName}
                                 className="input
                             input-bordered w-full" />
                         </label>
@@ -70,6 +81,7 @@ const AddProduct = () => {
                         <label className="input-group">
                             <input type="text" placeholder="Product Type"
                                 name='productType'
+                                defaultValue={productType}
                                 className="input input-bordered w-full" />
                         </label>
                     </div>
@@ -80,6 +92,7 @@ const AddProduct = () => {
                         <label className="input-group">
                             <input type="text" placeholder="Price"
                                 name='price'
+                                defaultValue={price}
                                 className="input input-bordered w-full" />
                         </label>
                     </div>
@@ -89,6 +102,7 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group">
                             <input type="text" placeholder="Description"
+                            defaultValue={description}
                                 name='description'
                                 className="input input-bordered w-full" />
                         </label>
@@ -101,6 +115,7 @@ const AddProduct = () => {
                     <label className="input-group">
                         <input type="text" placeholder="Image URL"
                             name='image'
+                            defaultValue={image}
                             className="input input-bordered w-full" />
                     </label>
                 </div>
@@ -133,10 +148,10 @@ const AddProduct = () => {
                         </div>
                 </div>
                 </div>
-                <button className="btn btn-primary w-full mt-7 text-white" type="submit">Add Product</button>
+                <button className="btn btn-primary w-full mt-7 text-white" type="submit">Update Product</button>
             </form>
         </div>
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;
