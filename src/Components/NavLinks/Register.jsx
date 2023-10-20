@@ -13,7 +13,7 @@ const Register = () => {
 
         createUser(email, password)
         .then(result => {
-            console.log(result.user)
+            console.log(`create usr: ${result.user}`);
         })
         .catch(error => {
             console.log(error);
