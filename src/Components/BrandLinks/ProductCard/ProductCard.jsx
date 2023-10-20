@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import StarRatings from "react-star-ratings";
-
 const ProductCard = ({product}) => {
     console.log(product);
     const {_id, image, brandName, productName, productType, price, rating} = product;
@@ -8,7 +7,7 @@ const ProductCard = ({product}) => {
     return (
         <div>
             <div className="card bg-base-100 shadow-xl">
-                <figure><img className="w-full h-48" src={image} alt="Shoes" /></figure>
+                <figure><img className="w-full h-48" src={image}/></figure>
                 <div className="card-body">
                     <h2 className="card-title">{productName}</h2>
                     <p>Brand: {brandName}</p>

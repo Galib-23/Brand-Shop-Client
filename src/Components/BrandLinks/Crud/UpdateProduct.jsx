@@ -6,17 +6,20 @@ import Swal from "sweetalert2";
 const UpdateProduct = () => {
     const product = useLoaderData();
 
-    const { productName, brandName, productType, price, description, image, rating } = product;
+    const { _id, productName, brandName, productType, price, description, image, rating } = product;
 
 
-    const [upbrandName, setUpbrandName] = useState('');
+    const [upbrandName, setUpbrandName] = useState(brandName);
+    console.log(`brand name is : ${brandName}`)
+    console.log(`upb is : ${upbrandName}`);
 
     const handleBrandName = (event) => {
-      setUpbrandName(event.target.value);
+        setUpbrandName(event.target.value);
     };
 
     const [uprating, setUpRating] = useState(rating);
     const handleRatingChange = (newRating) => {
+        console.log("New Rating:", newRating);
         setUpRating(newRating);
     };
 
@@ -28,29 +31,31 @@ const UpdateProduct = () => {
         const price = form.price.value;
         const description = form.description.value;
         const image = form.image.value;
+        console.log(image);
+        const brandName = upbrandName;
+        const rating = uprating;
+        const updatedProduct = { productName, brandName, productType, price, description, image, rating };
 
-        const newProduct = { productName, brandName, productType, price, description, image, rating };
-
-        fetch('http://localhost:5000/products',{
-            method: 'POST',
+        fetch(`http://localhost:5000/products/${_id}`, {
+            method: 'PUT',
             headers: {
-                'content-type' : 'application/json'
+                'content-type': 'application/json'
             },
-            body: JSON.stringify(newProduct)
+            body: JSON.stringify(updatedProduct)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.insertedId){
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Product Has Been Added',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Product Has Been Updated',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
 
     }
 
@@ -102,7 +107,7 @@ const UpdateProduct = () => {
                         </label>
                         <label className="input-group">
                             <input type="text" placeholder="Description"
-                            defaultValue={description}
+                                defaultValue={description}
                                 name='description'
                                 className="input input-bordered w-full" />
                         </label>
@@ -113,31 +118,29 @@ const UpdateProduct = () => {
                         <span className="label-text">Image URL</span>
                     </label>
                     <label className="input-group">
-                        <input type="text" placeholder="Image URL"
-                            name='image'
-                            defaultValue={image}
-                            className="input input-bordered w-full" />
+                        <input type="text" placeholder="Image URL" name="image" defaultValue={image} className="input input-bordered w-full" />
                     </label>
+
                 </div>
                 <div className='flex flex-col md:flex-row gap-5 mt-4 items-center'>
-                <div className="form-control">
-                    <div className='flex items-center'>
-                        <span className="label-text text-center text-base mr-4">Rating: </span>
-                        <StarRatings
-                            rating={rating}
-                            starRatedColor="gold"
-                            changeRating={handleRatingChange}
-                            numberOfStars={5}
-                            name="rating"
-                            starDimension="30px"
-                            starSpacing="3px"
-                        />
+                    <div className="form-control">
+                        <div className='flex items-center'>
+                            <span className="label-text text-center text-base mr-4">Rating: </span>
+                            <StarRatings
+                                rating={uprating}
+                                starRatedColor="gold"
+                                changeRating={handleRatingChange}
+                                numberOfStars={5}
+                                name="rating"
+                                starDimension="30px"
+                                starSpacing="3px"
+                            />
+                        </div>
                     </div>
-                </div>
-                <div className="form-control">
+                    <div className="form-control">
                         <div className="input-group">
-                            <select className="select select-bordered" onChange={handleBrandName} value={brandName}>
-                                <option selected>Pick category</option>
+                            <select className="select select-bordered" onChange={handleBrandName} defaultValue={upbrandName}>
+                                <option>Pick category</option>
                                 <option>Apple</option>
                                 <option>Samsung</option>
                                 <option>Sony</option>
@@ -146,7 +149,7 @@ const UpdateProduct = () => {
                                 <option>Amd</option>
                             </select>
                         </div>
-                </div>
+                    </div>
                 </div>
                 <button className="btn btn-primary w-full mt-7 text-white" type="submit">Update Product</button>
             </form>
