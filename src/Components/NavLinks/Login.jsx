@@ -21,7 +21,6 @@ const Login = () => {
             const user = result.user;
             setUser(user);
             console.log(user);
-            if(user){
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -29,7 +28,6 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-            }
         })
         .catch(error => {
             console.log('error', error.message);

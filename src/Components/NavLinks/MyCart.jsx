@@ -15,7 +15,7 @@ const MyCart = () => {
     if(cartProducts.length == 0){
        return <div className="flex flex-col  items-center justify-center min-h-screen">
             <h2 className="text-4xl font-extrabold text-red-700 mb-8">Oops..</h2>
-            <p className="text-xl font-semibold mb-8">No Products available of this brand</p>
+            <p className="text-xl font-semibold mb-8">No Products in Cart</p>
             <img className="w-56 md:w-96" src={no} alt="" />
         </div>
     }
