@@ -5,6 +5,7 @@ import Navbar from "../Navbar";
 import bg from '../../assets/background.jpg';
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import app from "../../firebase/firebase.config";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const {signIn, setUser} = useContext(AuthContext);
@@ -20,6 +21,15 @@ const Login = () => {
             const user = result.user;
             setUser(user);
             console.log(user);
+            if(user){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Login Successfull',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
         })
         .catch(error => {
             console.log('error', error.message);

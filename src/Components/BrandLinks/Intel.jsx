@@ -13,10 +13,13 @@ const Intel = () => {
     </div>
     }
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:container mx-auto">
+        <div className=" mt-16">
+            <h2 className="text-4xl font-extrabold text-center">Intel PRODUCTS</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:container mx-auto mt-16">
             {
                 intelProducts.map(intel=> <ProductCard key={intel._id} product={intel}></ProductCard>)
             }
+            </div>
         </div>
     );
 };
