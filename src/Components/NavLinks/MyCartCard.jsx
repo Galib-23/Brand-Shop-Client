@@ -40,7 +40,7 @@ const MyCartCard = ({ mycart , cartProducts, setCartProducts}) => {
     return (
         <div>
             <div className="card md:max-w-md mb-4 card-side bg-base-100 shadow-xl">
-                <figure><img className="h-44" src={image} alt="Movie" /></figure>
+                <figure><img className="h-full w-44" src={image} alt="Movie" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{productName}</h2>
                     <p>Brand: {brandName}</p>

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import Swal from 'sweetalert2';
+import Navbar from '../Navbar';
+import bg from '../../assets/background.jpg';
 const AddProduct = () => {
 
     const [brandName, setbrandName] = useState('');
@@ -48,13 +50,17 @@ const AddProduct = () => {
     }
 
     return (
-        <div className="md:container mx-auto">
-            <h2 className="text-4xl text-center font-extrabold my-12">Add Product</h2>
+        <div
+            style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', }}
+        >
+            <div className='md:container mx-auto'>
+            <Navbar></Navbar>
+            <h2 className="text-4xl text-center font-extrabold my-12 text-white">Add Product</h2>
             <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Product Name</span>
+                            <span className="label-text text-white">Product Name</span>
                         </label>
                         <label className="input-group">
                             <input type="text" placeholder="Product Name"
@@ -65,7 +71,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Product Type</span>
+                            <span className="label-text text-white">Product Type</span>
                         </label>
                         <label className="input-group">
                             <input type="text" placeholder="Product Type"
@@ -75,7 +81,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Price</span>
+                            <span className="label-text text-white">Price</span>
                         </label>
                         <label className="input-group">
                             <input type="text" placeholder="Price"
@@ -85,7 +91,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Description</span>
+                            <span className="label-text text-white">Description</span>
                         </label>
                         <label className="input-group">
                             <input type="text" placeholder="Description"
@@ -96,7 +102,7 @@ const AddProduct = () => {
                 </div>
                 <div className="form-control mt-4">
                     <label className="label">
-                        <span className="label-text">Image URL</span>
+                        <span className="label-text text-white">Image URL</span>
                     </label>
                     <label className="input-group">
                         <input type="text" placeholder="Image URL"
@@ -135,6 +141,8 @@ const AddProduct = () => {
                 </div>
                 <button className="btn btn-primary w-full mt-7 text-white" type="submit">Add Product</button>
             </form>
+            </div>
+            
         </div>
     );
 };

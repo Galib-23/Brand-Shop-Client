@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
-
+import logo from '../assets/logo.png';
 const Navbar = () => {
     const {user, logOut} = useContext(AuthContext);
     const handleLogOut = () =>{
@@ -20,7 +20,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-transparent text-white md:container mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -30,10 +30,13 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <div className="flex items-center gap-2">
+                <img className="w-14" src={logo} alt="" />
+                <h2 className="text-2xl font-extrabold">Nano Nest</h2>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 gap-3">
                     {links}
                 </ul>
             </div>
@@ -41,7 +44,7 @@ const Navbar = () => {
                 {
                     user 
                     ?
-                    <button onClick={handleLogOut} className="btn">Log Out</button>
+                    <button onClick={handleLogOut} className="btn bg-[#09999e] border-none text-white">Log Out</button>
                     :
                     <Link to='/login'><button className="btn">Log In</button></Link>
                 }

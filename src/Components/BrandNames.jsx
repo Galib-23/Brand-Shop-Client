@@ -7,7 +7,7 @@ import amd from '../assets/amd.jpg';
 import { Link } from 'react-router-dom';
 const BrandNames = () => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 md:container mx-auto'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-24 md:container mx-auto'>
             <Link to='/apple'>
                 <div className="card bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10">
