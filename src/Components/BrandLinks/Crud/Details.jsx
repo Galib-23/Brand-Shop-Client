@@ -11,7 +11,7 @@ const Details = () => {
 
     const handleAddToCart = () =>{
         const cart = {userEmail, image, productName, price, brandName};
-        fetch('http://localhost:5000/carts' , {
+        fetch('https://nano-nest-server.vercel.app/carts' , {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

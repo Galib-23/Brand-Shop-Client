@@ -36,7 +36,7 @@ const UpdateProduct = () => {
         const rating = uprating;
         const updatedProduct = { productName, brandName, productType, price, description, image, rating };
 
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://nano-nest-server.vercel.app/products/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

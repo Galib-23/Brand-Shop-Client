@@ -26,7 +26,7 @@ const AddProduct = () => {
 
         const newProduct = { productName, brandName, productType, price, description, image, rating };
 
-        fetch('http://localhost:5000/products',{
+        fetch('https://nano-nest-server.vercel.app/products',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

@@ -3,13 +3,28 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Navbar from "../Navbar";
 import bg from '../../assets/background.jpg';
+import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import app from "../../firebase/firebase.config";
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const {signIn, setUser} = useContext(AuthContext);
 
     const location = useLocation();
     const navigate = useNavigate();
 
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    const handleGoogleSignIn = () =>{
+        signInWithPopup(auth, provider)
+        .then(result => {
+            const user = result.user;
+            setUser(user);
+            console.log(user);
+        })
+        .catch(error => {
+            console.log('error', error.message);
+        })
+    }
 
     const handleLogin = e =>{
         e.preventDefault();
@@ -58,6 +73,10 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                         </form>
+                        <div className="flex items-center justify-center mb-2">
+                            <h1>Or Sign in With Google</h1>
+                        <button className="w-10 h-10 bg-yellow-100 text-orange-600 border border-black font-semibold ml-4 rounded-full" onClick={handleGoogleSignIn}>G</button>
+                        </div>
                     </div>
                 </div>
             </div>

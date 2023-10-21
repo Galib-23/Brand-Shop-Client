@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: '/mycart',
         element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/carts')
+        loader: () => fetch('https://nano-nest-server.vercel.app/carts')
         
       },
       {
@@ -52,42 +52,42 @@ const router = createBrowserRouter([
       {
         path: '/apple',
         element: <Apple></Apple>,
-        loader: () => fetch('http://localhost:5000/products')
+        loader: () => fetch('https://nano-nest-server.vercel.app/products')
       },
       {
         path: '/samsung',
         element: <Samsung></Samsung>,
-        loader: () => fetch('http://localhost:5000/products')
+        loader: () => fetch('https://nano-nest-server.vercel.app/products')
       },
       {
         path: '/sony',
         element: <Sony></Sony>,
-        loader: () => fetch('http://localhost:5000/products')
+        loader: () => fetch('https://nano-nest-server.vercel.app/products')
       },
       {
         path: '/google',
         element: <Google></Google>,
-        loader: () => fetch('http://localhost:5000/products')
+        loader: () => fetch('https://nano-nest-server.vercel.app/products')
       },
       {
         path: '/intel',
         element: <Intel></Intel>,
-        loader: () => fetch('http://localhost:5000/products')
+        loader: () => fetch('https://nano-nest-server.vercel.app/products')
       },
       {
         path: '/amd',
         element: <Amd></Amd>,
-        loader: () => fetch('http://localhost:5000/products')
+        loader: () => fetch('https://nano-nest-server.vercel.app/products')
       },
       {
         path: '/details/:id',
-        element: <Details></Details>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+        element: <PrivateRoute><Details></Details></PrivateRoute>,
+        loader: ({params}) => fetch(`https://nano-nest-server.vercel.app/products/${params.id}`)
       },
       {
         path:'/updateProduct/:id',
-        element: <UpdateProduct></UpdateProduct>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+        element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+        loader: ({params}) => fetch(`https://nano-nest-server.vercel.app/products/${params.id}`)
       }
     ]
   },

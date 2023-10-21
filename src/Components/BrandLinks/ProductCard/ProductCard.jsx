@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import StarRatings from "react-star-ratings";
 const ProductCard = ({product}) => {
+    
     console.log(product);
     const {_id, image, brandName, productName, productType, price, rating} = product;
     console.log(`brand nameee isss : ${brandName}`)
