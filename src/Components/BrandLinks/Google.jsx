@@ -15,7 +15,7 @@ const Google = () => {
     </div>
     }
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-28 mt-16">
             {
                 googleProducts.map(google=> <ProductCard key={google._id} product={google}></ProductCard>)
             }
